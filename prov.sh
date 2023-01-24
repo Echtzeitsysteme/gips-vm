@@ -80,15 +80,15 @@ StartupNotify=true\n
 " > /home/vagrant/Desktop/gips.desktop
 chmod u+x /home/vagrant/Desktop/gips.desktop
 
-touch /home/vagrant/Desktop/emoflon-website.desktop
+touch /home/vagrant/Desktop/gips-website.desktop
 printf "
 [Desktop Entry]
 Encoding=UTF-8
-Name=eMoflon::IBeX Website
+Name=GIPS Website
 Type=Link
-URL=https://emoflon.org/ibex
+URL=https://gips.dev/
 Icon=web-browser
-" > /home/vagrant/Desktop/emoflon-website.desktop
+" > /home/vagrant/Desktop/gips-website.desktop
 
 touch /home/vagrant/Desktop/gips-examples.desktop
 printf "
