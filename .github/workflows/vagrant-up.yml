@@ -28,6 +28,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - name: install dependencies
+      run: |
+        brew install wget unzip gnu-tar gnu-sed
     - name: show Vagrant version
       run: vagrant --version
     - name: run vagrant up
@@ -37,7 +40,12 @@ jobs:
     - name: export virtualbox VM
       run: |
         vagrant halt
-        vboxmanage export gips -o gips.ova
+        vboxmanage export gips -o gips.ovf
+        sed -i -e '/<BIOS>/,/<\/BIOS>/d' gips.ovf
+        sed -i -e '/<RemoteDisplay enabled="true">/,/<\/RemoteDisplay>/d' gips.ovf
+        gtar -cvf gips.ova gips.ovf gips-disk001.vmdk
+        rm -rf gips.ovf gips-disk001.vmdk
+      # ^gtar (to use gnu-tar) instead of macOS tar
     - name: upload artifact
       uses: actions/upload-artifact@v3
       with:
