@@ -46,11 +46,12 @@ cd ~/eclipse-apps
 # Get eclipse
 if [[ ! -f "./$ECLIPSE_ARCHIVE.zip" ]]; then
 	log "Downloading latest GIPS Eclipse archive from Github."
-	curl -s https://api.github.com/repos/Echtzeitsysteme/gips-eclipse-build/releases/latest \
+	curl -s --header "Authorization: Bearer ${GITHUB_TOKEN}" \
+        https://api.github.com/repos/Echtzeitsysteme/gips-eclipse-build/releases/latest \
         | grep "$ECLIPSE_ARCHIVE.zip" \
         | cut -d : -f 2,3 \
         | tr -d \" \
-        | wget -q -i - \
+        | wget -q --header="Authorization: Bearer ${GITHUB_TOKEN}" -i - \
         || :
 fi
 

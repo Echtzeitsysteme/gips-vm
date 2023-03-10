@@ -37,6 +37,8 @@ jobs:
       run: |
         vagrant up
         echo "=> Vagrant run finished."
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
     - name: export virtualbox VM
       run: |
         vagrant halt
