@@ -38,6 +38,8 @@ Unfortunately, only the macOS-based GitHub-hosted action runners do support nest
 
 Therefore, we've adapted the CI-configuration to provision the **GIPS-VM** on a macOS-based runner until nested virtualization support gets added to the Linux-based runners.
 
+Unfortunately, these workflows did break **very often** lately so we switched back to self-hosted Linux-based runners.
+
 ### Self-hosted Linux-based runners
 
 Currently, all actions must be run by a self-hosted GitHub runner, because GitHub-hosted runners do not provide the VT-x flag:
@@ -63,4 +65,4 @@ Required packages (at least):
 - `VirtualBox`
 - `vagrant`
 
-**Please keep in mind that your runner (VM) needs the virtualization flag enabled and at least 6 GB of RAM!**
+**Please keep in mind that your runner (VM) needs the virtualization flag enabled and at least 10 GB of RAM!**
