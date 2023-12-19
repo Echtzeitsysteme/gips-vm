@@ -33,7 +33,7 @@ jobs:
         vboxmanage list vms | \
         grep -o -P '(?<={).*(?=})' | \
         while read line ; do vboxmanage unregistervm $line --delete ; done
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: show Vagrant version
       run: vagrant --version
     - name: run vagrant up
@@ -51,7 +51,7 @@ jobs:
         tar -cvf gips.ova gips.ovf gips-disk001.vmdk
         rm -rf gips.ovf gips-disk001.vmdk
     - name: upload artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: gips-ova
         path: gips.ova
