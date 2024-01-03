@@ -7,7 +7,7 @@ This repository is used to automatically build a [GIPS](https://github.com/Echtz
 
 ## Packages/Configuration
 
-- [Ubuntu 20.04](https://app.vagrantup.com/gusztavvargadr/boxes/ubuntu-desktop)
+- [Ubuntu 22.04](https://app.vagrantup.com/gusztavvargadr/boxes/xubuntu-desktop-2204-lts)
 - [OpenJDK 17](https://openjdk.org/projects/jdk/17/)
 - [Graphviz](https://graphviz.org/)
 - [GIPS Eclipse build](https://github.com/Echtzeitsysteme/gips-eclipse-build) (variant: *eclipse-gips-linux-user*)

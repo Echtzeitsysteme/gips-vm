@@ -124,7 +124,6 @@ sudo cp /usr/lib/x86_64-linux-gnu/jni/libglpk_java.* /usr/lib
 
 log "Clean-up"
 sudo apt-get remove -yq \
-        snapd \
         libreoffice-* \
         thunderbird \
         pidgin \
