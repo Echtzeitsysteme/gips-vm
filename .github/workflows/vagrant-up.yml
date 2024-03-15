@@ -28,11 +28,22 @@ jobs:
       group: Default
       labels: [self-hosted, Linux, X64]
     steps:
-    - name: clean up old VMs
+    - name: clean up old VirtualBox VMs
       run: | 
         vboxmanage list vms | \
         grep -o -P '(?<={).*(?=})' | \
         while read line ; do vboxmanage unregistervm $line --delete ; done
+    - name: clean up old Vagrant artifacts
+      run: | 
+        vagrant destroy gips || true
+        vagrant box remove gusztavvargadr/xubuntu-desktop-2204-lts || true
+    # https://stackoverflow.com/a/71346341
+    - name: clean up old GitHub Actions runner build folder
+      run: |
+        ls -la ./
+        rm -rf ./* || true
+        rm -rf ./.??* || true
+        ls -la ./
     - uses: actions/checkout@v4
     - name: show Vagrant version
       run: vagrant --version
@@ -42,7 +53,7 @@ jobs:
         echo "=> Vagrant run finished."
       env:
         GITHUB_TOKEN: ${{ github.token }}
-    - name: export virtualbox VM
+    - name: export VirtualBox VM
       run: |
         vagrant halt
         vboxmanage export gips -o gips.ovf
@@ -64,7 +75,7 @@ jobs:
     if: github.event_name == 'push' && contains(github.ref, 'refs/tags/') && github.event_name != 'schedule'
     steps:
       - name: collect artifacts
-        uses: actions/download-artifact@master
+        uses: actions/download-artifact@v4
       - name: create splitted ZIP archive
         run: |
           sudo apt-get install -yq zip
@@ -72,17 +83,22 @@ jobs:
       # Due to a bug in the release action, we have to upload all artifacts step-by-step
       # https://github.com/softprops/action-gh-release/issues/243
       - name: release gips-vm (1)
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           body: "The VM archive can not be directly added to this release because of the size limitation of 2GB per file. Please download the splitted ZIP archive and extract it manually."
           files: gips-vm.zip
       - name: release gips-vm (2)
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           body: "The VM archive can not be directly added to this release because of the size limitation of 2GB per file. Please download the splitted ZIP archive and extract it manually."
           files: gips-vm.z01
       - name: release gips-vm (3)
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           body: "The VM archive can not be directly added to this release because of the size limitation of 2GB per file. Please download the splitted ZIP archive and extract it manually."
           files: gips-vm.z02
+      - name: release gips-vm (4)
+        uses: softprops/action-gh-release@v2
+        with:
+          body: "The VM archive can not be directly added to this release because of the size limitation of 2GB per file. Please download the splitted ZIP archive and extract it manually."
+          files: gips-vm.z03
