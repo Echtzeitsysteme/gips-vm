@@ -122,6 +122,13 @@ sudo apt-get install -yq \
         libglpk40
 sudo cp /usr/lib/x86_64-linux-gnu/jni/libglpk_java.* /usr/lib
 
+sudo mv /home/vagrant/Desktop/*.desktop /usr/share/xubuntu/applications/
+sudo ln -s /usr/share/xubuntu/applications/gips.desktop /home/vagrant/Desktop/gips.desktop
+sudo ln -s /usr/share/xubuntu/applications/gips-website.desktop /home/vagrant/Desktop/gips-website.desktop
+sudo ln -s /usr/share/xubuntu/applications/gips-examples.desktop /home/vagrant/Desktop/gips-examples.desktop
+sudo ln -s /usr/share/xubuntu/applications/gips-tests.desktop /home/vagrant/Desktop/gips-tests.desktop
+
+# Clean up
 log "Clean-up"
 sudo apt-get remove -yq \
         libreoffice-* \

@@ -36,7 +36,7 @@ jobs:
     - name: clean up old Vagrant artifacts
       run: | 
         vagrant destroy gips || true
-        vagrant box remove gusztavvargadr/xubuntu-desktop-2204-lts || true
+        vagrant box remove gusztavvargadr/xubuntu-desktop-2404-lts || true
     # https://stackoverflow.com/a/71346341
     - name: clean up old GitHub Actions runner build folder
       run: |

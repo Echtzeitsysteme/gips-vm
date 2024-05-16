@@ -1,7 +1,7 @@
 token = ENV["GITHUB_TOKEN"]
 
 Vagrant.configure("2") do |config|
-    config.vm.box = "gusztavvargadr/xubuntu-desktop-2204-lts"
+    config.vm.box = "gusztavvargadr/xubuntu-desktop-2404-lts"
     config.vm.define 'gips'
     config.vm.provider :virtualbox do |vb|
         vb.name = "gips"
