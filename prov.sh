@@ -128,6 +128,15 @@ sudo ln -s /usr/share/xubuntu/applications/gips-website.desktop /home/vagrant/De
 sudo ln -s /usr/share/xubuntu/applications/gips-examples.desktop /home/vagrant/Desktop/gips-examples.desktop
 sudo ln -s /usr/share/xubuntu/applications/gips-tests.desktop /home/vagrant/Desktop/gips-tests.desktop
 
+# Install additional CLI tools
+log "Install additional CLI tools."
+sudo apt-get install -yq \
+        git \
+        ncdu \
+        htop \
+        tmux \
+        rsync
+
 # Clean up
 log "Clean-up"
 sudo apt-get remove -yq \
