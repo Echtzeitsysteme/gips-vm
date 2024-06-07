@@ -29,9 +29,9 @@ log "Installing updates."
 sudo apt-get update
 sudo apt-get upgrade -y
 
-# Java/JDK17
+# Java/JDK21
 log "Installing OpenJDK."
-sudo apt-get install -y openjdk-17-jdk
+sudo apt-get install -y openjdk-21-jdk
 #java --version
 
 # Packages for building a new kernel

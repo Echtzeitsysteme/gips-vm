@@ -8,7 +8,7 @@ This repository is used to automatically build a [GIPS](https://github.com/Echtz
 ## Packages/Configuration
 
 - [Ubuntu 24.04](https://app.vagrantup.com/gusztavvargadr/boxes/xubuntu-desktop-2404-lts)
-- [OpenJDK 17](https://openjdk.org/projects/jdk/17/)
+- [OpenJDK 21](https://openjdk.org/projects/jdk/21/)
 - [Graphviz](https://graphviz.org/)
 - [GIPS Eclipse build](https://github.com/Echtzeitsysteme/gips-eclipse-build) (variant: *eclipse-gips-linux-user*)
 - [GLPK ILP solver](https://www.gnu.org/software/glpk/)
