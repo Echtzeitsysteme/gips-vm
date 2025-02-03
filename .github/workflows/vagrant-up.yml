@@ -102,3 +102,8 @@ jobs:
         with:
           body: "The VM archive can not be directly added to this release because of the size limitation of 2GB per file. Please download the splitted ZIP archive and extract it manually."
           files: gips-vm.z03
+      - name: release gips-vm (5)
+        uses: softprops/action-gh-release@v2
+        with:
+          body: "The VM archive can not be directly added to this release because of the size limitation of 2GB per file. Please download the splitted ZIP archive and extract it manually."
+          files: gips-vm.z04
