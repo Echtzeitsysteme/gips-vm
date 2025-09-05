@@ -72,38 +72,39 @@ jobs:
     needs: [vagrant-provision]
     runs-on: ubuntu-22.04
     # Only run on pushed tags (and explicitely ignore scheduled runs)
-    if: github.event_name == 'push' && contains(github.ref, 'refs/tags/') && github.event_name != 'schedule'
+    # if: github.event_name == 'push' && contains(github.ref, 'refs/tags/') && github.event_name != 'schedule'
     steps:
       - name: collect artifacts
         uses: actions/download-artifact@v5
       - name: create splitted ZIP archive
         run: |
           sudo apt-get install -yq zip
+          ls -la
           zip -r -s 1990m gips-vm.zip gips-ova/gips.ova
-      # Due to a bug in the release action, we have to upload all artifacts step-by-step
-      # https://github.com/softprops/action-gh-release/issues/243
-      - name: release gips-vm (1)
-        uses: softprops/action-gh-release@v2
-        with:
-          body: "The VM archive can not be directly added to this release because of the size limitation of 2GB per file. Please download the splitted ZIP archive and extract it manually."
-          files: gips-vm.zip
-      - name: release gips-vm (2)
-        uses: softprops/action-gh-release@v2
-        with:
-          body: "The VM archive can not be directly added to this release because of the size limitation of 2GB per file. Please download the splitted ZIP archive and extract it manually."
-          files: gips-vm.z01
-      - name: release gips-vm (3)
-        uses: softprops/action-gh-release@v2
-        with:
-          body: "The VM archive can not be directly added to this release because of the size limitation of 2GB per file. Please download the splitted ZIP archive and extract it manually."
-          files: gips-vm.z02
-      - name: release gips-vm (4)
-        uses: softprops/action-gh-release@v2
-        with:
-          body: "The VM archive can not be directly added to this release because of the size limitation of 2GB per file. Please download the splitted ZIP archive and extract it manually."
-          files: gips-vm.z03
-      - name: release gips-vm (5)
-        uses: softprops/action-gh-release@v2
-        with:
-          body: "The VM archive can not be directly added to this release because of the size limitation of 2GB per file. Please download the splitted ZIP archive and extract it manually."
-          files: gips-vm.z04
+      # # Due to a bug in the release action, we have to upload all artifacts step-by-step
+      # # https://github.com/softprops/action-gh-release/issues/243
+      # - name: release gips-vm (1)
+      #   uses: softprops/action-gh-release@v2
+      #   with:
+      #     body: "The VM archive can not be directly added to this release because of the size limitation of 2GB per file. Please download the splitted ZIP archive and extract it manually."
+      #     files: gips-vm.zip
+      # - name: release gips-vm (2)
+      #   uses: softprops/action-gh-release@v2
+      #   with:
+      #     body: "The VM archive can not be directly added to this release because of the size limitation of 2GB per file. Please download the splitted ZIP archive and extract it manually."
+      #     files: gips-vm.z01
+      # - name: release gips-vm (3)
+      #   uses: softprops/action-gh-release@v2
+      #   with:
+      #     body: "The VM archive can not be directly added to this release because of the size limitation of 2GB per file. Please download the splitted ZIP archive and extract it manually."
+      #     files: gips-vm.z02
+      # - name: release gips-vm (4)
+      #   uses: softprops/action-gh-release@v2
+      #   with:
+      #     body: "The VM archive can not be directly added to this release because of the size limitation of 2GB per file. Please download the splitted ZIP archive and extract it manually."
+      #     files: gips-vm.z03
+      # - name: release gips-vm (5)
+      #   uses: softprops/action-gh-release@v2
+      #   with:
+      #     body: "The VM archive can not be directly added to this release because of the size limitation of 2GB per file. Please download the splitted ZIP archive and extract it manually."
+      #     files: gips-vm.z04
