@@ -27,7 +27,7 @@ log "Start provisioning."
 # Updates
 log "Installing updates."
 sudo apt-get update
-sudo apt-get dist-upgrade -y
+# sudo apt-get dist-upgrade -y
 
 # # Java/JDK21
 # log "Installing OpenJDK."
