@@ -79,7 +79,7 @@ jobs:
       - name: create splitted ZIP archive
         run: |
           sudo apt-get install -yq zip
-          zip -r -s 1990m gips-vm.zip gips-ova/gips.ova
+          zip -r -s 1990m gips-vm.zip gips.ova
       # Due to a bug in the release action, we have to upload all artifacts step-by-step
       # https://github.com/softprops/action-gh-release/issues/243
       - name: release gips-vm (1)
