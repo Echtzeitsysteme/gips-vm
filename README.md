@@ -65,4 +65,6 @@ Required packages (at least):
 - `VirtualBox`
 - `vagrant`
 
+There is a [script](./runner-setup.sh) available to install the necessary packages.
+
 **Please keep in mind that your runner (VM) needs the virtualization flag enabled and at least 10 GB of RAM!**
