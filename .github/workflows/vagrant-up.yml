@@ -44,7 +44,7 @@ jobs:
         rm -rf ./* || true
         rm -rf ./.??* || true
         ls -la ./
-    - uses: actions/checkout@v5
+    - uses: actions/checkout@v6
     - name: show Vagrant version
       run: vagrant --version
     - name: run vagrant up
