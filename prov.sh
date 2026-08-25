@@ -27,19 +27,19 @@ log "Start provisioning."
 # Updates
 log "Installing updates."
 sudo apt-get update
-sudo apt-get dist-upgrade -y
+sudo DEBIAN_FRONTEND=noninteractive apt-get dist-upgrade -y
 
 # Java/JDK21
 log "Installing OpenJDK."
-sudo apt-get install -y openjdk-21-jdk
+sudo DEBIAN_FRONTEND=noninteractive apt-get install -y openjdk-21-jdk
 #java --version
 
 # Packages for building a new kernel
-sudo apt-get install -y gcc make perl
+sudo DEBIAN_FRONTEND=noninteractive apt-get install -y gcc make perl
 
 # GIPS Eclipse
 log "Installing GIPS Eclipse."
-sudo apt-get install -y graphviz
+sudo DEBIAN_FRONTEND=noninteractive apt-get install -y graphviz
 mkdir -p ~/eclipse-apps
 cd ~/eclipse-apps
 
@@ -130,7 +130,7 @@ sudo ln -s /usr/share/xubuntu/applications/gips-tests.desktop /home/vagrant/Desk
 
 # Install additional CLI tools
 log "Install additional CLI tools."
-sudo apt-get install -yq \
+sudo DEBIAN_FRONTEND=noninteractive apt-get install -yq \
         git \
         ncdu \
         htop \
@@ -139,7 +139,7 @@ sudo apt-get install -yq \
 
 # Clean up
 log "Clean-up"
-sudo apt-get remove -yq \
+sudo DEBIAN_FRONTEND=noninteractive apt-get remove -yq \
         libreoffice-* \
         thunderbird \
         pidgin \
